@@ -7,6 +7,8 @@ Be sure to install truffle, also have ganache-cli local blockchain running.
 ```bash
 npm i -g truffle
 npm i -g ganache-cli
+
+cp .env.example .env
 ```
 
 ## Deploy
