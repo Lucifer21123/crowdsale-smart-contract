@@ -1,5 +1,26 @@
 {
+  "name": "offchain_crowdsale_contract_example",
+  "version": "0.0.1",
+  "description": "offchain data for crowdsale smart contract",
+  "scripts": {
+    "build": "truffle migrate",
+    "test": "truffle test"
+  },
+  "keywords": [
+    "smart contract",
+    "erc20",
+    "ethereum"
+  ],
+  "author": "Iyad Al-Kassab, Samy Kalem @ SKITSC",
+  "license": "MIT",
   "dependencies": {
+    "dotenv": "^9.0.1",
     "web3": "^1.3.5"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "chai-bn": "^0.2.1",
+    "mocha": "^8.4.0"
   }
 }

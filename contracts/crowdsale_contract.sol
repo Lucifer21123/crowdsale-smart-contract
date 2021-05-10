@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 
 /**
  * File Name: crowdsale_contract.sol
@@ -24,7 +25,7 @@ contract my_crowdsale_token is Context, ERC20 {
     
     constructor
         (
-        /** ERC20 data */
+        ////ERC20 data
             string memory name,
             string memory symbol,
             uint8 decimals,
@@ -37,20 +38,20 @@ contract my_crowdsale_token is Context, ERC20 {
 
 contract my_crowdsale_contract is Crowdsale {
     
-    ///defining and implementing private owner role
+    ////defining and implementing private owner role
     using Roles for Roles.Role;
     Roles.Role private p_owner;
     
-    ///defining current rate
+    ////defining current rate
     uint256 private p_rate;
     
-    ///aggregator initialization for ETH/USD price
+    ////aggregator initialization for ETH/USD price
     AggregatorV3Interface internal priceFeed;
     
-    ///constructor
+    ////constructor
     constructor
         (
-        /** crowsale data */
+        ////crowsale data
             uint256 init_rate,
             address payable wallet,
             IERC20 token_addr,
@@ -69,16 +70,29 @@ contract my_crowdsale_contract is Crowdsale {
             priceFeed = AggregatorV3Interface(0x8A753747A1Fa494EC906cE90E9f37563A8AF630e);
         }
 
+    uint80 private _roundID;
+    int private last_eth_usd_price;
+    uint private _startedAt;
+    uint private _timeStamp;
+    uint80 private _answeredInRound;
+
     //view function to obtain price from chainlink
-    function getThePrice() public view returns (int) {
+    function getThePrice() public returns (int) {
         (
-            uint80 roundID, 
+            uint80 roundID,
             int price,
             uint startedAt,
             uint timeStamp,
             uint80 answeredInRound
         ) = priceFeed.latestRoundData();
-        return price;
+
+        _roundID = roundID;
+        last_eth_usd_price = price;
+        _startedAt = startedAt;
+        _timeStamp = timeStamp;
+        _answeredInRound = answeredInRound;
+
+        return last_eth_usd_price;
     }
     
     function f_set_rate(uint256 newRate) public {
@@ -95,6 +109,6 @@ contract my_crowdsale_contract is Crowdsale {
 		
 		//here
 		
-        return p_rate;
+        return p_rate.mul(weiAmount);
     }
 }
