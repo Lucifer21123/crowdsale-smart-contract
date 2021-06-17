@@ -6,6 +6,3 @@ build
 
 #node modules
 node_modules
-
-/test
-test
