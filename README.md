@@ -39,6 +39,7 @@ Before deploying the token, be sure you edit /migrations/2_deploy.js const value
 
 ## Test
 
+Tests are run with <i>mocha</i> and <i>chai</i>, you should add your own test suite with your current dev.
 ```bash
 npm run test
 ```
