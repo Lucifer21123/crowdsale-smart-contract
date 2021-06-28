@@ -2,7 +2,7 @@
 
 <img src="https://img.shields.io/badge/solidity-6.7-green" />
 
-Simple example of an Crowdsale smart contract that also pulls data from outside of the chain with <a href="https://chain.link/">Chainlink</a>.
+<i> Jump start your smart contract development with a working example of a crowdsale contract</i>. This code is a simple example of an Crowdsale smart contract that also pulls data from outside of the chain with <a href="https://chain.link/">Chainlink</a>. You could also just build on top of this.
 
 ## Install
 
