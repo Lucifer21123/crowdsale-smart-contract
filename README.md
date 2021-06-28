@@ -1,5 +1,8 @@
-# offchain_crowdsale_contract_example
-Simple example of an Crowdsale smart contract
+# off-chain to on-chain crowdsale smart contract
+
+<img src="https://img.shields.io/badge/solidity-6.7-green" />
+
+Simple example of an Crowdsale smart contract that also pulls data from outside of the chain with <a href="https://chain.link/">Chainlink</a>.
 
 ## Install
 
@@ -16,9 +19,27 @@ cp .env.example .env
 ganache-cli -l 80000000000
 ```
 
-In another console, at the root of the project directory:
+In another console, at the root of the project directory (building will compile and migrate the contract):
 ```bash
 npm run build
+```
+
+To edit the logic of your crowdsale (don't forget it's immutable!), simply edit the function _getTokenAmount(uin256 weiAmount) in crowdsale_contract.sol
+```solidity
+function _getTokenAmount(uint256 weiAmount) internal view override returns (uint256) {
+        
+  //add logic here if needed
+		
+  return p_rate.mul(weiAmount);
+}
+```
+<strong>Important note</strong>: the aggregrated TWAP value is coded to work with the Rinkeby network, simply obtain the address of a contract in the network you require, check out the constructor of the contract.
+
+Before deploying the token, be sure you edit /migrations/2_deploy.js const values or simply edit the .env file (.env.example template provided)
+
+## Test
+
+```bash
 npm run test
 ```
 
