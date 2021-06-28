@@ -24,7 +24,7 @@ In another console, at the root of the project directory (building will compile 
 npm run build
 ```
 
-To edit the logic of your crowdsale (don't forget it's immutable!), simply edit the function _getTokenAmount(uin256 weiAmount) in crowdsale_contract.sol
+To edit the logic of your crowdsale (don't forget it's immutable!), simply edit the function <strong>_getTokenAmount(uin256 weiAmount)</strong> in <i>crowdsale_contract.sol</i>
 ```solidity
 function _getTokenAmount(uint256 weiAmount) internal view override returns (uint256) {
         
